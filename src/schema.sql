@@ -1,0 +1,19 @@
+DROP TABLE IF EXISTS student;
+DROP TABLE IF EXISTS score;
+PRAGMA foreign_keys = ON;
+
+CREATE TABLE student (
+	name VARCHAR(100) PRIMARY KEY UNIQUE,
+	password VARCHAR(70),
+	class VARCHAR(100)
+);
+
+CREATE TABLE score (
+	id PRIMARY KEY,
+	name VARCHAR(100) NOT NULL,
+	subject VARCHAR(100),
+	score DECIMAL(10,3),
+	FOREIGN KEY (name) REFERENCES student (name)
+	ON UPDATE CASCADE
+	ON DELETE CASCADE
+);
